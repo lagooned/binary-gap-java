@@ -1,5 +1,7 @@
 package com.jaredengler;
 
+import java.util.function.Predicate;
+
 public class BinaryGapCalculator {
 
     Integer calculate(Integer integer) {
@@ -30,9 +32,10 @@ public class BinaryGapCalculator {
     int findPositionOfNextOneFrom(String binaryString, int positionOfLastOne) {
 
         int newPos = binaryString.indexOf("1", positionOfLastOne + 1) - 1;
+        Predicate<Integer> isNextInstanceOfStringFound = i -> -1 != i;
 
         // defines behavior for dangling gaps ie ^(1|0)*100000$
-        return newPos < 1 ? positionOfLastOne : newPos;
+        return isNextInstanceOfStringFound.test(newPos) ? newPos : positionOfLastOne;
 
     }
 
