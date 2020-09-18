@@ -2,6 +2,7 @@ package com.jaredengler;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println();
+        BinaryGapCalculator binaryGapCalculator = new BinaryGapCalculator();
+        binaryGapCalculator.calculate(Integer.valueOf(args[0]));
     }
 }
